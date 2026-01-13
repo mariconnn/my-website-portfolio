@@ -1,0 +1,314 @@
+body {
+    font-size: 21px;
+    margin: 0;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    text-align: center;
+    color: #ffffff;
+}
+
+.navbar,
+.profile,
+.nav-links,
+.my-project-list,
+.what-i-do-list {
+    display: flex;
+}
+
+
+.navbar,
+.what-i-do {
+    background-color: #261f0a;
+}
+
+.navbar {
+    /*justify-content: space-between;*/
+    justify-content: center;
+    gap: 60%;
+}
+
+.name-logo {
+    font-family: "Sekuya", system-ui;
+}
+
+.nav-links {
+    gap: 30px;
+    padding: 20px;
+    align-items: center;
+}
+
+.links {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 200;
+    font-size: smaller;
+
+}
+
+
+.profile {
+
+    /*background-color: #6D3B07;*/
+    font-size: inherit;
+    padding: 100px;
+    justify-content: space-between;
+
+}
+
+
+.profile,
+.my-projects {
+    background-image: url("./images/image.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+
+.full-name {
+    font-family: monospace;
+    font-size: 0.6em;
+    background-color: #6D3B07;
+    padding: 10px;
+    width: fit-content;
+
+}
+
+.contact-icon {
+    width: 50px;
+}
+
+
+#profile-img {
+    margin-top: 110px;
+    width: 180px;
+    height: 180px;
+    border-radius: 150px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.my-description {
+    text-align: left;
+    margin: 0 50px 0 150px;
+    font-size: inherit;
+}
+
+.my-projects {
+    padding: 50px;
+}
+
+.what-i-do {
+    /*background-color: #4a3f21*/
+
+    height: 65vh;
+    padding: 50px;
+    font-weight: 250;
+    /*font-size: 0.9em;*/
+}
+
+
+.my-project-list,
+.what-i-do-list {
+    margin: 0 150px 0 150px;
+    gap: 30px;
+}
+
+
+.what-i-do-container:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 0.5s ease-in-out;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+
+.project-container:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 0.5s ease-in-out;
+    color: #ffffff;
+    background-color: #261f0a;
+}
+
+
+.project-container,
+.what-i-do-container {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+
+.what-i-do-container {
+    box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 1), 0 6px 20px 0 rgba(255, 255, 255, 0.19);
+}
+
+
+
+.project-images {
+    width: 100%;
+    height: auto;
+
+}
+
+/*text stylings*/
+
+h1 {
+    font-size: clamp(36px, 5vw, 60px);
+}
+
+h2 {
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+h3 {
+    font-size: clamp(24px, 3.5vw, 36px);
+}
+
+h4 {
+    font-size: clamp(20px, 2.5vw, 28px);
+}
+
+h5 {
+    font-size: clamp(18px, 2vw, 24px);
+}
+
+p {
+    font-size: clamp(15px, 1.5vw, 17px);
+}
+
+/* Tablet styles */
+@media (max-width: 1024px) {
+    .navbar {
+        gap: 20%;
+    }
+
+    .profile {
+        padding: 60px 40px;
+        justify-content: center;
+    }
+
+    .my-description {
+        margin: 0 20px;
+        text-align: center;
+    }
+
+    #profile-img {
+        margin-top: 0;
+    }
+
+    .my-project-list,
+    .what-i-do-list {
+        margin: 0 50px;
+        flex-direction: column;
+    }
+
+    .what-i-do {
+        height: auto;
+    }
+
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .navbar {
+        gap: 10px;
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        padding: 10px;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+    }
+
+    .my-description {
+        margin: 0;
+        text-align: center;
+    }
+
+    .full-name {
+        margin: 0 auto;
+    }
+
+    .contact {
+        justify-content: center;
+    }
+
+    .my-projects,
+    .what-i-do {
+        padding: 30px 15px;
+    }
+
+    .what-i-do {
+        height: auto;
+    }
+
+    .my-project-list,
+    .what-i-do-list {
+        margin: 0 10px;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .project-container,
+    .what-i-do-container {
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+}
+
+/* Small mobile styles */
+@media (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .my-project-list,
+    .what-i-do-list {
+
+        flex-direction: column;
+    }
+
+    .what-i-do {
+        height: auto;
+    }
+
+    #profile-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .contact-icon {
+        width: 40px;
+    }
+}
+
+/*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    text-align: left;*/
