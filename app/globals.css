@@ -1,0 +1,93 @@
+/* Shared cinema theme: tokens, base, and the reveal utility.
+   Section styles live in app/styles/{opening,feature,credits}.css. */
+:root {
+    --ink: #0a0a0c;
+    --ink-2: #141318;
+    --ink-3: #1e1c23;
+    --screen: #f5efe0;
+    --muted: #a39e93;
+    --velvet: #7a0f1c;
+    --velvet-deep: #3d0710;
+    --gold: #e8b64c;
+    --gold-soft: #f3d28a;
+
+    --font-display: "Bebas Neue", Impact, sans-serif;
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-type: "Courier Prime", "Courier New", monospace;
+    --font-body: "Work Sans", system-ui, sans-serif;
+
+    --gutter: clamp(16px, 4vw, 48px);
+    --max: 1200px;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--screen);
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    background: var(--gold);
+    color: var(--ink);
+}
+
+:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+}
+
+/* Reveal-on-scroll: add .reveal, useReveal() adds .is-visible */
+.reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
