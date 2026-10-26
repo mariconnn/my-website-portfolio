@@ -1,7 +1,7 @@
-# Netlify builds this as a Next.js app (its Next.js runtime is applied automatically).
+# Next.js static export: `npm run build` writes plain HTML/CSS/JS to out/.
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
 [build.environment]
   NODE_VERSION = "20"
