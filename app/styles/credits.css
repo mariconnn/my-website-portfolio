@@ -52,7 +52,7 @@
     border-radius: 18px;
     color: var(--ink);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 0 0 1px var(--gold-soft);
-    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+    transition: opacity 0.9s var(--ease-out), transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
     /* Round notches punched into both long sides at the perforation line */
     -webkit-mask-image:
         radial-gradient(circle var(--notch) at calc(100% - var(--stub-w)) 0, transparent 98%, #000),
@@ -433,8 +433,9 @@
 
 /* Viewport the credits roll through */
 .cr-roll-viewport {
+    --roll-h: min(340px, 52vh);
     position: relative;
-    height: min(340px, 52vh);
+    height: var(--roll-h);
     overflow: hidden;
     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
     mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
@@ -445,7 +446,8 @@
     flex-direction: column;
     gap: 22px;
     padding: 0 12px;
-    transform: translateY(100%);
+    /* Start just below the viewport (not 100% of the roll's own, taller, height) */
+    transform: translateY(var(--roll-h));
 }
 
 .cr-roll-viewport.cr-is-rolling .cr-roll {
@@ -460,12 +462,12 @@
 
 @keyframes cr-roll-up {
     from {
-        transform: translateY(100%);
+        transform: translateY(var(--roll-h));
     }
 
     to {
-        /* Leaves the tail of the roll (THE END) resting in the viewport */
-        transform: translateY(calc(-100% + 300px));
+        /* Leaves the tail of the roll (THE END) resting mid-viewport */
+        transform: translateY(calc(-100% + var(--roll-h) / 2 + 40px));
     }
 }
 

@@ -1,1 +1,559 @@
-﻿/* feature section styles (placeholder, owned by the feature worker) */
+﻿/* ============================================================
+   FEATURE PRESENTATION: slate headers, The Cast (#about),
+   Now Showing (#my-projects), trailer dialog.
+   Every class/keyframe below is prefixed ft-.
+   ============================================================ */
+
+.ft-section {
+    position: relative;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: clamp(80px, 12vh, 140px) var(--gutter);
+    scroll-margin-top: var(--nav-h, 72px);
+}
+
+.ft-section-dark {
+    max-width: none;
+    background:
+        radial-gradient(ellipse 70% 40% at 50% 0%, rgba(232, 182, 76, 0.08), transparent 70%),
+        var(--ink-2);
+}
+
+.ft-section-dark > * {
+    max-width: var(--max);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ---------- Clapperboard slate ---------- */
+
+.ft-slate {
+    width: min(460px, 100%);
+    margin: 0 auto clamp(48px, 8vh, 80px);
+}
+
+.ft-clapper {
+    height: 34px;
+    border-radius: 4px 4px 0 0;
+    background: repeating-linear-gradient(-55deg, var(--screen) 0 22px, var(--ink) 22px 44px);
+    border: 2px solid var(--screen);
+    transform-origin: 2px 100%;
+    /* Small enough that the raised stick stays inside the section's top padding */
+    transform: rotate(-12deg);
+    transition: transform 0.35s cubic-bezier(0.6, 0, 0.9, 0.4) 0.25s;
+}
+
+.ft-slate.is-visible .ft-clapper {
+    transform: rotate(0deg);
+}
+
+.ft-slate-board {
+    background: var(--ink-3);
+    border: 2px solid var(--screen);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 16px 20px 20px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+.ft-slate-fields {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid rgba(245, 239, 224, 0.35);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    font-family: var(--font-type);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+}
+
+.ft-slate-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(44px, 7vw, 68px);
+    line-height: 1;
+    letter-spacing: 0.06em;
+    margin: 0;
+    color: var(--gold);
+}
+
+.ft-slate-sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 18px;
+    margin: 6px 0 0;
+    color: var(--screen);
+}
+
+/* ---------- The Cast: film-strip frames ---------- */
+
+.ft-cast {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(20px, 3vw, 32px);
+}
+
+.ft-frame {
+    --sprocket: radial-gradient(circle at center, var(--ink) 0 4px, transparent 4.5px) 0 0 / 20px 100% repeat-x;
+    position: relative;
+    padding: 26px 0;
+    background: #050506;
+    border-radius: 6px;
+    transition: opacity 0.9s var(--ease-out), transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+/* Sprocket holes on top and bottom edges */
+.ft-frame::before,
+.ft-frame::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 14px;
+    background:
+        radial-gradient(circle, var(--screen) 0 3.5px, transparent 4px) 0 50% / 22px 14px repeat-x;
+    opacity: 0.55;
+}
+
+.ft-frame::before {
+    top: 6px;
+}
+
+.ft-frame::after {
+    bottom: 6px;
+}
+
+.ft-frame-inner {
+    height: 100%;
+    margin: 0 14px;
+    padding: 28px 24px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(232, 182, 76, 0.0), transparent 70%),
+        var(--ink-3);
+    border-radius: 3px;
+    text-align: left;
+    transition: background 0.5s var(--ease-out);
+}
+
+.ft-frame:hover {
+    transform: translateY(-8px) rotate(-0.6deg);
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(232, 182, 76, 0.4);
+}
+
+.ft-frame:hover .ft-frame-inner {
+    background:
+        radial-gradient(circle at 50% 0%, rgba(232, 182, 76, 0.22), transparent 70%),
+        var(--ink-3);
+}
+
+.ft-frame-icon {
+    filter: invert(1) sepia(0.6) saturate(3) hue-rotate(5deg) brightness(0.95);
+}
+
+.ft-frame-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+    margin: 14px 0 2px;
+    color: var(--screen);
+}
+
+.ft-frame-as {
+    font-family: var(--font-type);
+    font-size: 14px;
+    color: var(--gold);
+    margin: 0 0 12px;
+}
+
+.ft-frame-line {
+    margin: 0 0 18px;
+    font-size: 16px;
+    color: rgba(245, 239, 224, 0.8);
+}
+
+.ft-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+.ft-tags li {
+    font-family: var(--font-type);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid rgba(232, 182, 76, 0.55);
+    border-radius: 999px;
+    color: var(--gold-soft);
+}
+
+.ft-tags-dark li {
+    border-color: rgba(10, 10, 12, 0.5);
+    color: var(--ink);
+}
+
+/* ---------- Now Showing ---------- */
+
+.ft-marquee {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 40px;
+}
+
+.ft-marquee span {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: 0.3em;
+    padding: 10px 28px;
+    color: var(--ink);
+    background: var(--gold);
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px var(--ink-2), 0 0 0 6px var(--gold), 0 0 30px rgba(232, 182, 76, 0.45);
+}
+
+.ft-posters {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 36px);
+}
+
+.ft-poster {
+    perspective: 1200px;
+}
+
+.ft-poster-inner {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    transform-style: preserve-3d;
+    transition: transform 0.8s var(--ease-out);
+}
+
+.ft-poster-inner.ft-flipped {
+    transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .ft-poster-inner:not(.ft-flipped):hover {
+        transform: rotateY(-8deg) translateY(-6px);
+    }
+}
+
+.ft-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.55);
+}
+
+.ft-front {
+    border: 2px solid rgba(232, 182, 76, 0.55);
+    background: var(--ink-3);
+}
+
+.ft-poster-img {
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+}
+
+.ft-poster-inner:hover .ft-poster-img {
+    transform: scale(1.05);
+}
+
+.ft-front::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0) 35%, rgba(10, 10, 12, 0.92) 85%);
+    pointer-events: none;
+}
+
+.ft-front-copy {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 22px;
+    text-align: center;
+}
+
+.ft-genre {
+    font-family: var(--font-type);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin: 0 0 4px;
+}
+
+.ft-poster-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(36px, 4vw, 48px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin: 0;
+    color: var(--screen);
+}
+
+.ft-stars {
+    margin: 8px 0 0;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-size: 14px;
+}
+
+/* The whole front face is the flip button */
+.ft-flip-hit {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.ft-flip-hint {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: var(--font-type);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold);
+    padding: 4px 10px;
+    border-radius: 999px;
+    opacity: 0.85;
+    transition: opacity 0.3s;
+}
+
+.ft-flip-hit:hover .ft-flip-hint,
+.ft-flip-hit:focus-visible .ft-flip-hint {
+    opacity: 1;
+}
+
+.ft-flip-hit:focus-visible {
+    outline-offset: -4px;
+}
+
+/* Ticket-styled back face */
+.ft-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    background:
+        radial-gradient(circle at 0 50%, var(--ink-2) 0 14px, transparent 15px),
+        radial-gradient(circle at 100% 50%, var(--ink-2) 0 14px, transparent 15px),
+        var(--screen);
+    color: var(--ink);
+    border: 3px solid var(--velvet);
+    text-align: left;
+}
+
+.ft-back-admit {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    color: var(--velvet);
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed rgba(10, 10, 12, 0.3);
+}
+
+.ft-back-synopsis {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    line-height: 1.5;
+    margin: 0 0 18px;
+}
+
+.ft-back-label {
+    font-family: var(--font-type);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(10, 10, 12, 0.65);
+    margin: 0 0 8px;
+}
+
+.ft-back-actions {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ft-btn {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 2px solid var(--velvet);
+    background: var(--velvet);
+    color: var(--screen);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s var(--ease-out);
+}
+
+.ft-btn:hover {
+    background: var(--velvet-deep);
+    transform: translateY(-2px);
+}
+
+.ft-btn-ghost {
+    background: transparent;
+    color: var(--velvet);
+}
+
+.ft-btn-ghost:hover {
+    background: rgba(122, 15, 28, 0.1);
+}
+
+.ft-btn:focus-visible {
+    outline-color: var(--velvet);
+}
+
+@media (max-width: 899px) {
+    .ft-posters {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        max-width: 420px;
+    }
+}
+
+/* ---------- Trailer dialog ---------- */
+
+.ft-trailer {
+    width: min(960px, calc(100vw - 32px));
+    max-height: calc(100svh - 32px);
+    padding: 0;
+    border: 1px solid rgba(232, 182, 76, 0.5);
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--screen);
+    overflow: auto;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.8);
+}
+
+.ft-trailer::backdrop {
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(4px);
+}
+
+.ft-trailer[open] {
+    animation: ft-trailer-in 0.45s var(--ease-out);
+}
+
+@keyframes ft-trailer-in {
+    from {
+        opacity: 0;
+        transform: scale(0.94);
+    }
+}
+
+.ft-trailer-body {
+    position: relative;
+}
+
+/* 21:9 letterboxed screen with a slow Ken Burns move */
+.ft-trailer-screen {
+    position: relative;
+    aspect-ratio: 21 / 9;
+    overflow: hidden;
+    background: #000;
+    border-top: 14px solid #000;
+    border-bottom: 14px solid #000;
+}
+
+.ft-trailer-img {
+    object-fit: cover;
+    animation: ft-kenburns 14s ease-in-out infinite alternate;
+}
+
+@keyframes ft-kenburns {
+    from {
+        transform: scale(1.02) translate(0, 0);
+    }
+
+    to {
+        transform: scale(1.15) translate(-3%, -2%);
+    }
+}
+
+.ft-trailer-copy {
+    padding: 24px clamp(20px, 4vw, 40px) 32px;
+}
+
+.ft-trailer-label {
+    font-family: var(--font-type);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 6px;
+}
+
+.ft-trailer-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin: 0 0 6px;
+}
+
+.ft-trailer-synopsis {
+    max-width: 60ch;
+    margin: 14px 0 18px;
+    color: rgba(245, 239, 224, 0.85);
+}
+
+.ft-trailer-close {
+    position: absolute;
+    top: 22px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 239, 224, 0.6);
+    background: rgba(10, 10, 12, 0.7);
+    color: var(--screen);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.ft-trailer-close:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ft-clapper {
+        transform: none;
+    }
+
+    .ft-trailer-img {
+        animation: none;
+    }
+}

@@ -85,15 +85,10 @@ export default function Contact() {
       </div>
 
       <div className="cr-actions reveal" data-reveal>
-        {torn ? (
-          <button type="button" className="cr-btn" onClick={() => setTorn(false)}>
-            Reset
-          </button>
-        ) : (
-          <button type="button" className="cr-btn" onClick={() => setTorn(true)}>
-            Tear the ticket
-          </button>
-        )}
+        {/* One button so keyboard focus survives the state swap */}
+        <button type="button" className="cr-btn" onClick={() => setTorn((t) => !t)}>
+          {torn ? "Reset" : "Tear the ticket"}
+        </button>
       </div>
 
       <ul className="cr-socials reveal" data-reveal>
