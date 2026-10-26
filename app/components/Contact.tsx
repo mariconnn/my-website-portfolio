@@ -7,6 +7,11 @@ import { useReveal } from "../hooks/useReveal";
 
 const SOCIALS = [
   {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/landicho-maricon-667816311",
+    icon: "/images/linkedin.svg",
+  },
+  {
     label: "Facebook",
     href: "https://www.facebook.com/maricon.landicho.52",
     icon: "/images/facebook.png",
@@ -98,7 +103,7 @@ export default function Contact() {
               <Image src={s.icon} alt="" width={28} height={28} />
               <span>{s.label}</span>
               <span className="cr-social-hint" aria-hidden="true">
-                &nearr;
+                ↗
               </span>
             </a>
           </li>

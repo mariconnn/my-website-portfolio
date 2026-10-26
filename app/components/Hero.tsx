@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const ROLES = ["WEB DEVELOPER", "UI/UX DESIGNER", "MOBILE APP DEVELOPER"];
 
 const SOCIALS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/landicho-maricon-667816311", icon: "/images/linkedin.svg" },
   { label: "Facebook", href: "https://www.facebook.com/maricon.landicho.52", icon: "/images/facebook.png" },
   { label: "Instagram", href: "https://www.instagram.com/coiledbrat/", icon: "/images/instagram.png" },
   { label: "Discord", href: "https://discord.com/channels/@me", icon: "/images/discord.png" },
