@@ -510,9 +510,10 @@ html.intro-seen .op-intro {
     transition: transform 0.25s ease-out;
 }
 
+/* Colour grade is baked into profile.jpg; keep the face in frame when cropped to 3:4 */
 .op-poster-img {
     object-fit: cover;
-    filter: contrast(1.05) saturate(0.9);
+    object-position: 50% 30%;
 }
 
 .op-poster-glare {
